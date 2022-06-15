@@ -1,0 +1,11 @@
+C:\Users\Dev\Desktop\Estudos\Pos Fiap\Microservices\Atividades\GeekBurguer.Products\GeekBurguer.Products.Contract\bin\Debug\net5.0\GeekBurguer.Products.Contract.deps.json
+C:\Users\Dev\Desktop\Estudos\Pos Fiap\Microservices\Atividades\GeekBurguer.Products\GeekBurguer.Products.Contract\bin\Debug\net5.0\GeekBurguer.Products.Contract.dll
+C:\Users\Dev\Desktop\Estudos\Pos Fiap\Microservices\Atividades\GeekBurguer.Products\GeekBurguer.Products.Contract\bin\Debug\net5.0\GeekBurguer.Products.Contract.pdb
+C:\Users\Dev\Desktop\Estudos\Pos Fiap\Microservices\Atividades\GeekBurguer.Products\GeekBurguer.Products.Contract\obj\Debug\net5.0\GeekBurguer.Products.Contract.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Dev\Desktop\Estudos\Pos Fiap\Microservices\Atividades\GeekBurguer.Products\GeekBurguer.Products.Contract\obj\Debug\net5.0\GeekBurguer.Products.Contract.AssemblyInfoInputs.cache
+C:\Users\Dev\Desktop\Estudos\Pos Fiap\Microservices\Atividades\GeekBurguer.Products\GeekBurguer.Products.Contract\obj\Debug\net5.0\GeekBurguer.Products.Contract.AssemblyInfo.cs
+C:\Users\Dev\Desktop\Estudos\Pos Fiap\Microservices\Atividades\GeekBurguer.Products\GeekBurguer.Products.Contract\obj\Debug\net5.0\GeekBurguer.Products.Contract.csproj.CoreCompileInputs.cache
+C:\Users\Dev\Desktop\Estudos\Pos Fiap\Microservices\Atividades\GeekBurguer.Products\GeekBurguer.Products.Contract\obj\Debug\net5.0\GeekBurguer.Products.Contract.dll
+C:\Users\Dev\Desktop\Estudos\Pos Fiap\Microservices\Atividades\GeekBurguer.Products\GeekBurguer.Products.Contract\obj\Debug\net5.0\ref\GeekBurguer.Products.Contract.dll
+C:\Users\Dev\Desktop\Estudos\Pos Fiap\Microservices\Atividades\GeekBurguer.Products\GeekBurguer.Products.Contract\obj\Debug\net5.0\GeekBurguer.Products.Contract.pdb
+C:\Users\Dev\Desktop\Estudos\Pos Fiap\Microservices\Atividades\GeekBurguer.Products\GeekBurguer.Products.Contract\bin\Debug\net5.0\ref\GeekBurguer.Products.Contract.dll

@@ -1,0 +1,17 @@
+C:\Users\Dev\Desktop\Estudos\Pos Fiap\Microservices\Atividades\GeekBurguer.Products\GeekBurguer.Products\obj\Release\net6.0\PubTmp\Out\GeekBurguer.Products.exe
+C:\Users\Dev\Desktop\Estudos\Pos Fiap\Microservices\Atividades\GeekBurguer.Products\GeekBurguer.Products\obj\Release\net6.0\PubTmp\Out\appsettings.Development.json
+C:\Users\Dev\Desktop\Estudos\Pos Fiap\Microservices\Atividades\GeekBurguer.Products\GeekBurguer.Products\obj\Release\net6.0\PubTmp\Out\appsettings.json
+C:\Users\Dev\Desktop\Estudos\Pos Fiap\Microservices\Atividades\GeekBurguer.Products\GeekBurguer.Products\obj\Release\net6.0\PubTmp\Out\GeekBurguer.Products.dll
+C:\Users\Dev\Desktop\Estudos\Pos Fiap\Microservices\Atividades\GeekBurguer.Products\GeekBurguer.Products\obj\Release\net6.0\PubTmp\Out\GeekBurguer.Products.deps.json
+C:\Users\Dev\Desktop\Estudos\Pos Fiap\Microservices\Atividades\GeekBurguer.Products\GeekBurguer.Products\obj\Release\net6.0\PubTmp\Out\GeekBurguer.Products.runtimeconfig.json
+C:\Users\Dev\Desktop\Estudos\Pos Fiap\Microservices\Atividades\GeekBurguer.Products\GeekBurguer.Products\obj\Release\net6.0\PubTmp\Out\GeekBurguer.Products.pdb
+C:\Users\Dev\Desktop\Estudos\Pos Fiap\Microservices\Atividades\GeekBurguer.Products\GeekBurguer.Products\obj\Release\net6.0\PubTmp\Out\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\Dev\Desktop\Estudos\Pos Fiap\Microservices\Atividades\GeekBurguer.Products\GeekBurguer.Products\obj\Release\net6.0\PubTmp\Out\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+C:\Users\Dev\Desktop\Estudos\Pos Fiap\Microservices\Atividades\GeekBurguer.Products\GeekBurguer.Products\obj\Release\net6.0\PubTmp\Out\Microsoft.OpenApi.dll
+C:\Users\Dev\Desktop\Estudos\Pos Fiap\Microservices\Atividades\GeekBurguer.Products\GeekBurguer.Products\obj\Release\net6.0\PubTmp\Out\Newtonsoft.Json.dll
+C:\Users\Dev\Desktop\Estudos\Pos Fiap\Microservices\Atividades\GeekBurguer.Products\GeekBurguer.Products\obj\Release\net6.0\PubTmp\Out\Newtonsoft.Json.Bson.dll
+C:\Users\Dev\Desktop\Estudos\Pos Fiap\Microservices\Atividades\GeekBurguer.Products\GeekBurguer.Products\obj\Release\net6.0\PubTmp\Out\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\Dev\Desktop\Estudos\Pos Fiap\Microservices\Atividades\GeekBurguer.Products\GeekBurguer.Products\obj\Release\net6.0\PubTmp\Out\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\Dev\Desktop\Estudos\Pos Fiap\Microservices\Atividades\GeekBurguer.Products\GeekBurguer.Products\obj\Release\net6.0\PubTmp\Out\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\Dev\Desktop\Estudos\Pos Fiap\Microservices\Atividades\GeekBurguer.Products\GeekBurguer.Products\obj\Release\net6.0\PubTmp\Out\GeekBurguer.Products.Contract.dll
+C:\Users\Dev\Desktop\Estudos\Pos Fiap\Microservices\Atividades\GeekBurguer.Products\GeekBurguer.Products\obj\Release\net6.0\PubTmp\Out\GeekBurguer.Products.Contract.pdb
