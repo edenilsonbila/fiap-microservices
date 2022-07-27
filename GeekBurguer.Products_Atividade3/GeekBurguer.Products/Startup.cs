@@ -43,6 +43,7 @@ namespace GeekBurguer.Products
             services.AddDbContext<ProductsDbContext>(o => o.UseInMemoryDatabase("geekburger-products"));
 
             services.AddScoped<IProductsRepository, ProductsRepository>();
+            services.AddScoped<IStoreRepository, StoreRepository>();
             services.AddAutoMapper(typeof(Startup).Assembly);
         }
 
