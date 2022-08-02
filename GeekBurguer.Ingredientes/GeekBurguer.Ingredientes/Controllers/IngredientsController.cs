@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GeekBurguer.Ingredientes.Controllers
 {
-    public class Ingredients : Controller
+    public class IngredientsController : Controller
     {
         public IActionResult Index()
         {
