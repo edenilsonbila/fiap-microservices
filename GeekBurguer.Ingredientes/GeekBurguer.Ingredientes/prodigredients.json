@@ -1,0 +1,71 @@
+[{ "storename": "Paulista",
+    "name": "Darth Bacon",
+    "image": "hamb1.png",
+    "price": 2.5,
+    "items": [ { "name": "beef" }, { "name": "ketchup" }, { "name": "bread" } ]
+  },
+  { "storename": "Paulista",
+    "name": "Cap. Spork",
+    "image": "hamb2.png",
+    "price": 3.5,
+    "items": [ { "name": "pork" }, { "name": "mustard" }, { "name": "whole bread" } ]
+  },
+  { "storename": "Paulista",
+    "name": "Beef Turner",
+    "image": "hamb3.png",
+    "price": 4.0,   
+    "items": [ { "name": "beef" }, { "name": "mustard" }, { "name": "bread" } ]
+  },
+  { "storename": "Paulista",
+    "name": "The Big Bang Meal",
+    "image": "hamb4.png",
+    "price": 6.5,   
+    "items": [ { "name": "beef" }, { "name": "mustard" }, { "name": "bread" }, { "name": "beef" }, { "name": "ketchup" }, { "name": "bread" } ]
+  },
+  { "storename": "Paulista",
+    "name": "Out of this World",
+    "image": "hamb5.png",
+    "price": 4.0,
+    "items": [ { "name": "salmon" }, { "name": "onion wings" }, { "name": "whole bread" } ]
+  },
+  { "storename": "Morumbi",
+    "name": "Darth Bacon",
+    "image": "hamb1.png",
+    "price": 2.5,
+    "items": [ { "name": "beef" }, { "name": "ketchup" }, { "name": "bread" } ]
+  },
+  { "storename": "Morumbi",
+    "name": "Cap. Spork",
+    "image": "hamb2.png",
+    "price": 5.0,   
+    "items": [ { "name": "pork" }, { "name": "mustard" }, { "name": "whole bread" } ]
+  },
+  { "storename": "Morumbi",
+    "name": "Beef Turner",
+    "image": "hamb3.png",
+    "price": 5.5,   
+    "items": [ { "name": "beef" }, { "name": "mustard" }, { "name": "bread" } ]
+  },
+  { "storename": "Morumbi",
+    "name": "The Big Bang Meal",
+    "image": "hamb4.png",
+    "price": 8.5,
+    "items": [ { "name": "beef" }, { "name": "mustard" }, { "name": "bread" }, { "name": "beef" }, { "name": "ketchup" }, { "name": "bread" } ]
+  },
+  {
+    "storename": "Morumbi",
+    "name": "Out of this World",
+    "image": "hamb5.png",
+    "price": 5.5,   
+    "items": [ { "name": "salmon" }, { "name": "onion wings" }, { "name": "whole bread" }
+    ]
+  },
+  {
+    "storename": "Morumbi",
+    "name": "Run to the Hills",
+    "image": "hamb6.png",
+    "price": 4.5,   
+    "items": [ { "name": "chicken" }, { "name": "tomato" }, { "name": "whole bread" }
+    ]
+  }
+]

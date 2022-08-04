@@ -10,6 +10,6 @@ namespace GeekBurguer.Ingredientes.Repository.Context
 
         }
 
-        public DbSet<Ingredients> Products { get; set; }
+        public DbSet<Ingredients> ProductIgredients { get; set; }
     }
 }

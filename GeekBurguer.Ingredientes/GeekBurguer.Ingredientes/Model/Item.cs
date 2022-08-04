@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace GeekBurguer.Ingredientes.Model
 {
@@ -6,6 +8,6 @@ namespace GeekBurguer.Ingredientes.Model
     {
         [Key]
         public Guid ItemId { get; set; }
-        public List<string> Name { get; set; }
+        public string Name { get; set; }
     }
 }
