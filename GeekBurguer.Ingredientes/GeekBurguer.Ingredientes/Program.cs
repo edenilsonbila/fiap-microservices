@@ -18,8 +18,10 @@ builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddDbContext<ProductsDbContext>
                 (o => o.UseInMemoryDatabase("geekburger-ingredients"));
 
-builder.Services.AddScoped<IngredientsService>();
-builder.Services.AddScoped<IProductRepository, ProductRepository>();
+builder.Services.AddSingleton<IngredientsService>();
+builder.Services.AddSingleton<IProductRepository, ProductRepository>();
+builder.Services.AddSingleton<IIngredientsService, IngredientsService>();
+builder.Services.AddSingleton<ILabelImageConsumer, LabelImageConsumerService>();
 
 
 var app = builder.Build();
@@ -35,4 +37,10 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+var labelImageConsumer = app.Services.GetService<ILabelImageConsumer>();
+Task.Run(() => labelImageConsumer.Run());
+
+
 app.Run();
+
+
