@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using GeekBurguer.Ingredientes.Contract.DTOs;
+using GeekBurguer.Ingredientes.Services;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,11 +8,22 @@ using System.Threading.Tasks;
 
 namespace GeekBurguer.Ingredientes.Controllers
 {
+    [Route("api/products")]
     public class IngredientsController : Controller
     {
-        public IActionResult Index()
+        private readonly IngredientsService _service;
+        public IngredientsController(IngredientsService service)
         {
-            return View();
+            _service = service;
+        }       
+        [HttpGet]
+        [Route("byrestrictions")]
+        public IActionResult GetProductsByRestrictions([FromQuery] IngredientesRequest request)
+        {
+            var response = _service.GetProductsByRestrictions(request).Result;
+            if (response != null)
+                return Ok(response);
+            return NotFound("Nenhum produto encontrado.");
         }
     }
 }
