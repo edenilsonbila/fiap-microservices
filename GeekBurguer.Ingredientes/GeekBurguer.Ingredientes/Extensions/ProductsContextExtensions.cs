@@ -11,6 +11,7 @@ namespace GeekBurguer.Ingredientes.Extensions
     {
         public static void Seed(this ProductsDbContext context)
         {
+            /*
             context.ProductIgredients.RemoveRange(context.ProductIgredients);
 
             context.SaveChanges();
@@ -26,6 +27,7 @@ namespace GeekBurguer.Ingredientes.Extensions
             });
 
             context.SaveChanges();
+            */
         }
     }
 }

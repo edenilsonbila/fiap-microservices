@@ -8,6 +8,6 @@ namespace GeekBurguer.Ingredientes.Model
         public Guid ProductId { get; set; }
         public string StoreName { get; set; }
 
-        public List<Item> Items { get; set; }
+        public List<string> Items { get; set; }
     }
 }

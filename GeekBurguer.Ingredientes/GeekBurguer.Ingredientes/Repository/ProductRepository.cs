@@ -1,6 +1,7 @@
 ﻿using GeekBurger.Service.Contract.DTO;
 using GeekBurguer.Ingredientes.Interfaces;
 using GeekBurguer.Ingredientes.Model;
+using GeekBurguer.Ingredientes.Repository.Context;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -14,6 +15,7 @@ namespace GeekBurguer.Ingredientes.Repository
     public class ProductRepository : IProductRepository
     {
         private const string URL_API_PRODUCTS = "http://localhost:54972/api/products";
+        private readonly ProductsDbContext _context;
         public async Task<List<ProductToGet>> GetByStoreName(string storeName)
         {
             
@@ -27,9 +29,8 @@ namespace GeekBurguer.Ingredientes.Repository
                 var response = await client.GetAsync(builder.Uri);
                 if (response.StatusCode != HttpStatusCode.OK)
                     return products;
-                var json = response.Content.ReadAsStringAsync().Result;
-                products = JsonConvert.DeserializeObject<List<ProductToGet>>(json);
-                return products;
+
+                return JsonConvert.DeserializeObject<List<ProductToGet>>(await response.Content.ReadAsStringAsync());
             }
         }
 
