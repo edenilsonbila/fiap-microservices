@@ -6,7 +6,7 @@ namespace GeekBurguer.Ingredientes.Services
     public class LabelImageConsumerService : ILabelImageConsumer
     {
         private readonly IConfiguration _configuration;
-        private const string queueName = "labelimageadded";
+        private const string queueName = "LabelImageAdded";
         static ServiceBusClient client;
         static ServiceBusProcessor processor;
         static List<Task> pendingCompleteTasks = new List<Task>();
@@ -28,6 +28,7 @@ namespace GeekBurguer.Ingredientes.Services
             lock (pendingCompleteTasks)
             {
                 pendingCompleteTasks.Add(args.CompleteMessageAsync(args.Message));
+
                 PendingTask = pendingCompleteTasks.LastOrDefault();
             }
 
@@ -60,11 +61,7 @@ namespace GeekBurguer.Ingredientes.Services
                 processor.ProcessMessageAsync += ReceiveMessage;
                 processor.ProcessErrorAsync += ExceptionHandler;
                 await processor.StartProcessingAsync();
-                Console.WriteLine("Aguardando novas mensagens...");
-                Console.ReadKey();
-                Console.WriteLine("\nPausando recebimento...");
                 await processor.StopProcessingAsync();
-                Console.WriteLine("Serviço de recebimento foi parado!");
             }
             finally
             {
