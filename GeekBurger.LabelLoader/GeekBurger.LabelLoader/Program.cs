@@ -94,6 +94,7 @@ namespace GeekBurger.LabelLoader.Helper
         {
             var labelPath = _configHelper.GetExecutionPath() + _configHelper.GetConfigString("ImageFolder");
             var imageExtensions = new[] { ".jpg", ".jpeg", ".png", ".bmp", ".gif" };
+            var visionService = new VisionService();
 
 
             if (!Directory.Exists(labelPath))
@@ -116,18 +117,20 @@ namespace GeekBurger.LabelLoader.Helper
                     {
                         var imageFile = new FileInfo(image);
 
+                        var ingredients = visionService.ReadIngredientsFromImage(imageFile.FullName).Result;
+
                         var labelImage = new LabelImage
                         {
                             ItemName = "meat",
-                            Ingredients = new List<string> { "diary", "gluten", "soy" }
+                            Ingredients = ingredients
                         };
 
-                        var teste = BinaryData.FromString(JsonConvert.SerializeObject(labelImage));
+                        var binaryLabelData = BinaryData.FromString(JsonConvert.SerializeObject(labelImage));
 
 
                         var messagem = new ServiceBusMessage()
                         {
-                            Body = teste,
+                            Body = binaryLabelData,
                             MessageId = Guid.NewGuid().ToString()
                         };
 
