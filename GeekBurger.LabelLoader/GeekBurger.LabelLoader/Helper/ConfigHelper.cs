@@ -28,5 +28,10 @@ namespace GeekBurger.LabelLoader.Helper
         {
             return _config;
         }
+
+        public string GetExecutionPath()
+        {
+            return Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
+        }
     }
 }

@@ -5,34 +5,26 @@ using Newtonsoft.Json;
 using System.Text;
 
 namespace GeekBurger.LabelLoader.Helper
-{ 
+{
     internal class Program
     {
-        private static readonly ServiceBusConfig _serviceBusConfig = new ConfigHelper()
+        private static ConfigHelper _configHelper = new ConfigHelper();
+        private static readonly ServiceBusConfig _serviceBusConfig = _configHelper
             .GetInstance()
             .GetSection("ServiceBus")
             .Get<ServiceBusConfig>();
-        private static readonly string queueName = "LabelImageAdded";
+        private static readonly string queueName = "labelimageadded";
         static ServiceBusClient _client;
         static ServiceBusSender _sender;
+        static Thread _readFromFolderThread;
 
         static void Main(string[] args)
         {
-            //IMPLEMENTAR LEITURA DE IMAGENS
-            ReadImagesFromFolder();
-
-            //IMPLEMENTAR MONTAGEM DE MENSAGENS
-            /*
-            new ServiceBusMessage
-            {
-                Body = Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(new LabelImage())),
-                MessageId = Guid.NewGuid().ToString()
-            }
-            */
+            _readFromFolderThread = new Thread(ReadImagesFromFolder) { IsBackground = true };
+            _readFromFolderThread.Start();
 
 
-
-            Console.WriteLine(_serviceBusConfig.ConnectionString);
+            Console.ReadKey();
         }
 
         private static async Task SendMessagesAsync(List<ServiceBusMessage> messages)
@@ -61,7 +53,25 @@ namespace GeekBurger.LabelLoader.Helper
                 await _sender.DisposeAsync();
                 await _client.DisposeAsync();
             }
+        }
 
+        private static async Task SendMessageAsync(ServiceBusMessage message)
+        {
+            _client = new ServiceBusClient(_serviceBusConfig.ConnectionString);
+            _sender = _client.CreateSender(queueName);
+
+            try
+            {
+                var sendTask = _sender.SendMessageAsync(message);
+                await sendTask;
+                CheckCommunicationExceptions(sendTask);
+                Console.WriteLine($"Enviando mensagem...");
+            }
+            finally
+            {
+                await _sender.DisposeAsync();
+                await _client.DisposeAsync();
+            }
         }
 
         public static bool CheckCommunicationExceptions(Task task)
@@ -80,9 +90,53 @@ namespace GeekBurger.LabelLoader.Helper
             return false;
         }
 
-        private static void ReadImagesFromFolder()
+        private static async void ReadImagesFromFolder()
         {
+            var labelPath = _configHelper.GetExecutionPath() + _configHelper.GetConfigString("ImageFolder");
+            var imageExtensions = new[] { ".jpg", ".jpeg", ".png", ".bmp", ".gif" };
 
+
+            if (!Directory.Exists(labelPath))
+                Directory.CreateDirectory(labelPath);
+
+            while (true)
+            {
+                Thread.Sleep(1000);
+
+                var di = new DirectoryInfo(labelPath);
+
+                var images = Directory
+               .GetFiles(labelPath)
+               .Where(file => imageExtensions.Any(file.ToLower().EndsWith))
+               .ToList();
+
+                if (images.Any())
+                {
+                    foreach (var image in images)
+                    {
+                        var imageFile = new FileInfo(image);
+
+                        var labelImage = new LabelImage
+                        {
+                            ItemName = "meat",
+                            Ingredients = new List<string> { "diary", "gluten", "soy" }
+                        };
+
+                        var teste = BinaryData.FromString(JsonConvert.SerializeObject(labelImage));
+
+
+                        var messagem = new ServiceBusMessage()
+                        {
+                            Body = teste,
+                            MessageId = Guid.NewGuid().ToString()
+                        };
+
+                        await SendMessageAsync(messagem);
+
+                        imageFile.Delete();
+                    }
+                }
+            }
         }
     }
 }

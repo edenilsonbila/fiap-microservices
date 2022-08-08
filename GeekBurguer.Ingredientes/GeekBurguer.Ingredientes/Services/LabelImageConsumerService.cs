@@ -6,7 +6,7 @@ namespace GeekBurguer.Ingredientes.Services
     public class LabelImageConsumerService : ILabelImageConsumer
     {
         private readonly IConfiguration _configuration;
-        private const string queueName = "LabelImageAdded";
+        private const string queueName = "labelimageadded";
         static ServiceBusClient client;
         static ServiceBusProcessor processor;
         static List<Task> pendingCompleteTasks = new List<Task>();
@@ -37,6 +37,8 @@ namespace GeekBurguer.Ingredientes.Services
 
             string body = args.Message.Body.ToString();
 
+            Console.WriteLine("Mensagem Recebida:" + body);
+
         }
 
         static Task ExceptionHandler(ProcessErrorEventArgs args)
@@ -61,7 +63,8 @@ namespace GeekBurguer.Ingredientes.Services
                 processor.ProcessMessageAsync += ReceiveMessage;
                 processor.ProcessErrorAsync += ExceptionHandler;
                 await processor.StartProcessingAsync();
-                await processor.StopProcessingAsync();
+                Console.ReadKey();
+                //await processor.StopProcessingAsync();
             }
             finally
             {
