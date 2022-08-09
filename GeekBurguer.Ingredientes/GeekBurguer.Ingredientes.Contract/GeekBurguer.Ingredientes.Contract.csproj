@@ -4,6 +4,10 @@
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Version>21</Version>
+    <Authors>EdenilsonBila</Authors>
+    <Description>Contrato Ingredientes 21NET - Grupo4</Description>
   </PropertyGroup>
 
 </Project>

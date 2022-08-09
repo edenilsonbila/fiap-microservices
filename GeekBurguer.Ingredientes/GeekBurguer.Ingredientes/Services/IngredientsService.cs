@@ -12,7 +12,7 @@ namespace GeekBurguer.Ingredientes.Services
             _productRepository = productRepository;
         }
 
-        public async Task<List<IngredientsResponse>> GetProductsByRestrictions(IngredientesRequest request)
+        public async Task<List<IngredientsResponse>> GetProductsByRestrictions(IngredientsRequest request)
         {
             List<IngredientsResponse> prodIngredients = new();
             var products = await _productRepository.GetByStoreName(request.StoreName);

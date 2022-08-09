@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GeekBurguer.Ingredientes.Contract.DTOs
 {
-    public class IngredientesRequest
+    public class IngredientsRequest
     {
         public string StoreName { get; set; }
         public List<string> Restrictions { get; set; }
