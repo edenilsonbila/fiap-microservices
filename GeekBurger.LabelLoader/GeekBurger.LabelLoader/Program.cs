@@ -118,10 +118,18 @@ namespace GeekBurger.LabelLoader.Helper
                         var imageFile = new FileInfo(image);
 
                         var ingredients = visionService.ReadIngredientsFromImage(imageFile.FullName).Result;
+                        var itemName = GetItemName(ingredients);
+
+                        if (string.IsNullOrEmpty(itemName))
+                        {
+                            imageFile.Delete();
+                            //gravaria um log para evitar parar o serviço...
+                            break;
+                        }
 
                         var labelImage = new LabelImage
                         {
-                            ItemName = "meat",
+                            ItemName = itemName,
                             Ingredients = ingredients
                         };
 
@@ -140,6 +148,23 @@ namespace GeekBurger.LabelLoader.Helper
                     }
                 }
             }
+        }
+
+        private static string GetItemName(List<string> ingredients)
+        {
+            var itemNameIndex = ingredients.IndexOf(ingredients.Where(e => e.Contains("itemname")).FirstOrDefault() ?? "");
+
+            if (itemNameIndex == -1)
+                return "";
+
+            var itemName = ingredients[itemNameIndex]?.Split(":")[1] ?? "";
+
+            if (!string.IsNullOrEmpty(itemName))
+            {
+                ingredients.RemoveAt(itemNameIndex);
+            }
+
+            return itemName;
         }
     }
 }

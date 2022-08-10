@@ -14,7 +14,7 @@ namespace GeekBurguer.Ingredientes.Repository
 {
     public class ProductRepository : IProductRepository
     {
-        private const string URL_API_PRODUCTS = "http://localhost:54972/api/products";
+        private const string URL_API_PRODUCTS = "https://geekburger-products.azurewebsites.net/api/products";//"http://localhost:54972/api/products";
         private readonly ProductsDbContext _context;
         public async Task<List<ProductToGet>> GetByStoreName(string storeName)
         {
