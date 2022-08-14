@@ -16,6 +16,37 @@ namespace GeekBurguer.Ingredientes.Repository
     {
         private const string URL_API_PRODUCTS = "https://geekburger-products.azurewebsites.net/api/products";//"http://localhost:54972/api/products";
         private readonly ProductsDbContext _context;
+        private readonly List<ProductIngredients> _db;
+
+        
+        public ProductRepository(ProductsDbContext context)
+        {
+            _context = context;
+            _db = new List<ProductIngredients>();
+        }
+        
+        
+        public bool Add(ProductIngredients product)
+        {
+            _context.ProductIgredients.Add(product);
+            _context.SaveChanges();
+            return true;
+        }
+
+        public bool AddRange(IEnumerable<ProductIngredients> products)
+        {
+            _db.AddRange(products);
+            /*
+            _context.ProductIgredients.AddRange(products);
+            _context.SaveChanges();*/
+            return true;
+        }
+
+        public List<ProductIngredients> GetAll()
+        {
+            return _db;
+        }
+
         public async Task<List<ProductToGet>> GetByStoreName(string storeName)
         {
             
@@ -34,7 +65,7 @@ namespace GeekBurguer.Ingredientes.Repository
             }
         }
 
-        public async Task<IEnumerable<Ingredients>> GetProductsIngredients(Guid productId)
+        public async Task<IEnumerable<ProductIngredients>> GetProductsIngredients(Guid productId)
         {
             throw new NotImplementedException();
         }

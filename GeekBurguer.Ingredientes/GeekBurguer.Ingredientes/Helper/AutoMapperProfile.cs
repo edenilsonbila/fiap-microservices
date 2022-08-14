@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using GeekBurger.Service.Contract.DTO;
 using GeekBurguer.Ingredientes.Contract.DTOs;
+using GeekBurguer.Ingredientes.Model;
 
 namespace GeekBurguer.Ingredientes.Helper
 {
@@ -9,6 +10,9 @@ namespace GeekBurguer.Ingredientes.Helper
         public AutoMapperProfile()
         {
             CreateMap<ProductToGet, IngredientsResponse>()
+                .ForMember(x => x.ProductId, y => y.MapFrom(a => a.ProductId))
+                .ForMember(x => x.Ingredients, y => y.MapFrom(a => a.Items.Select(b => b.Name)));
+            CreateMap<ProductToGet, ProductIngredients>()
                 .ForMember(x => x.ProductId, y => y.MapFrom(a => a.ProductId))
                 .ForMember(x => x.Ingredients, y => y.MapFrom(a => a.Items.Select(b => b.Name)));
         }

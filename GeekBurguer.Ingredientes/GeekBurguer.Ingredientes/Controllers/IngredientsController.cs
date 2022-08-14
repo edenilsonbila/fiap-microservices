@@ -16,15 +16,6 @@ namespace GeekBurguer.Ingredientes.Controllers
         [Route("byrestrictions")]
         public IActionResult GetProductsByRestrictions([FromQuery] IngredientsRequest request)
         {
-            /*
-            var inge = new IngredientsResponse();
-            inge.ProductId = new Guid();
-            return Ok(new List<IngredientsResponse>() { 
-                new IngredientsResponse() { ProductId = new Guid(), Ingredients = new List<string> { "soy"} 
-                } 
-            });
-            */
-            
             var response = _service.GetProductsByRestrictions(request).Result;
             if (response != null)
                 return Ok(response);

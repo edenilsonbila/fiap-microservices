@@ -2,6 +2,6 @@
 {
     public interface ILabelImageConsumer
     {
-        public void Run();
+        public Task Run();
     }
 }

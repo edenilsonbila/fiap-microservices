@@ -8,8 +8,14 @@ namespace GeekBurguer.Ingredientes.Interfaces
 {
     public interface IProductRepository
     {
-        Task<IEnumerable<Ingredients>> GetProductsIngredients(Guid productId);
+        Task<IEnumerable<ProductIngredients>> GetProductsIngredients(Guid productId);
 
         Task<List<ProductToGet>> GetByStoreName(string storeName);
+
+        bool Add(ProductIngredients product);
+
+        bool AddRange(IEnumerable<ProductIngredients> products);
+
+        List<ProductIngredients> GetAll();
     }
 }
