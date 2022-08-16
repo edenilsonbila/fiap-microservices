@@ -42,7 +42,7 @@ namespace GeekBurguer.Ingredientes.Services
                         }
                     }
                 }
-
+                //FINALIZAR AQ PQ QUEBRANDO A LOGICA
                 if (!prodHasRestriction)
                 {
                     var ingredient = new IngredientsResponse();
@@ -66,9 +66,9 @@ namespace GeekBurguer.Ingredientes.Services
                 StoreName = "paulista",
                 ProductId = new Guid(),
                 Items = new List<ItemIngredients> {
-                new ItemIngredients() { ItemId = new Guid(), Name = "meat" },
-                new ItemIngredients() { ItemId = new Guid(), Name = "bread" },
-                new ItemIngredients() { ItemId = new Guid(), Name = "lettuce" },
+                new ItemIngredients() { ItemId = new Guid(), Name = "meat", Ingredients = { "fiber","salt" } },
+                new ItemIngredients() { ItemId = new Guid(), Name = "bread", Ingredients = { "gluten", "suggar","egg" } },
+                new ItemIngredients() { ItemId = new Guid(), Name = "lettuce", Ingredients = { "chlorophyll" } },
             }
             });
             _productRepository.Add(new Model.Products()
@@ -76,9 +76,9 @@ namespace GeekBurguer.Ingredientes.Services
                 StoreName = "paulista",
                 ProductId = new Guid(),
                 Items = new List<ItemIngredients> {
-                new ItemIngredients() { ItemId = new Guid(), Name = "cheese" },
-                new ItemIngredients() { ItemId = new Guid(), Name = "tomato" },
-                new ItemIngredients() { ItemId = new Guid(), Name = "bacon" },
+                new ItemIngredients() { ItemId = new Guid(), Name = "cheese", Ingredients = { "lactose", "fat","dye" } },
+                new ItemIngredients() { ItemId = new Guid(), Name = "tomato", Ingredients = { "chlorophyll" } },
+                new ItemIngredients() { ItemId = new Guid(), Name = "bacon", Ingredients = { "fat","dye" } },
             }
             });
 
