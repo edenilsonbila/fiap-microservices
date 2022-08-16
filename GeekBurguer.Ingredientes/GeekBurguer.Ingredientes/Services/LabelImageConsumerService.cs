@@ -1,5 +1,7 @@
 ﻿using Azure.Messaging.ServiceBus;
+using GeekBurguer.Ingredientes.DTO;
 using GeekBurguer.Ingredientes.Interfaces;
+using Newtonsoft.Json;
 
 namespace GeekBurguer.Ingredientes.Services
 {
@@ -11,12 +13,12 @@ namespace GeekBurguer.Ingredientes.Services
         static ServiceBusProcessor processor;
         static List<Task> pendingCompleteTasks = new List<Task>();
         static int count = 0;
-        //private readonly IIngredientsService _ingredientsService;
+        private readonly IIngredientsService _ingredientsService;
 
         public LabelImageConsumerService(IConfiguration configuration, IIngredientsService ingredientsService)
         {
             _configuration = configuration;
-           // _ingredientsService = ingredientsService;
+            _ingredientsService = ingredientsService;
         }
 
         async Task ReceiveMessage(ProcessMessageEventArgs args)
@@ -37,8 +39,10 @@ namespace GeekBurguer.Ingredientes.Services
 
             string body = args.Message.Body.ToString();
 
+            var labelImageDto = JsonConvert.DeserializeObject<LabelImageDTO>(body);
+
             //Finalizar Implementação
-            //MargeProductsAndIngredients();
+            _ingredientsService.MargeProductsAndIngredients(labelImageDto);
 
             Console.WriteLine("Mensagem Recebida:" + body);
 

@@ -164,7 +164,7 @@ namespace GeekBurger.LabelLoader.Helper
                 ingredients.RemoveAt(itemNameIndex);
             }
 
-            return itemName;
+            return itemName.Trim();
         }
     }
 }

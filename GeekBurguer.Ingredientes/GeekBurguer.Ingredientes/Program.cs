@@ -1,8 +1,6 @@
 using GeekBurguer.Ingredientes.Interfaces;
 using GeekBurguer.Ingredientes.Repository;
-using GeekBurguer.Ingredientes.Repository.Context;
 using GeekBurguer.Ingredientes.Services;
-using Microsoft.EntityFrameworkCore;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,12 +13,11 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-builder.Services.AddDbContext<ProductsDbContext>
-                (o => o.UseInMemoryDatabase("geekburger-ingredients"));
 
-builder.Services.AddScoped<IProductRepository, ProductRepository>();
-builder.Services.AddScoped<IIngredientsService, IngredientsService>();
-builder.Services.AddScoped<ILabelImageConsumer, LabelImageConsumerService>();
+builder.Services.AddSingleton<IProductRepository, ProductRepository>();
+builder.Services.AddSingleton<IIngredientsService, IngredientsService>();
+builder.Services.AddSingleton<ILabelImageConsumer, LabelImageConsumerService>();
+builder.Services.AddSingleton<IngredientsService>();
 
 
 var app = builder.Build();

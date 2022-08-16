@@ -1,4 +1,5 @@
 ﻿using GeekBurguer.Ingredientes.Contract.DTOs;
+using GeekBurguer.Ingredientes.DTO;
 
 namespace GeekBurguer.Ingredientes.Interfaces
 {
@@ -7,5 +8,7 @@ namespace GeekBurguer.Ingredientes.Interfaces
         Task<List<IngredientsResponse>> GetProductsByRestrictions(IngredientsRequest request);
 
         Task GetProducts();
+
+        void MargeProductsAndIngredients(LabelImageDTO labelImageDto);
     }
 }

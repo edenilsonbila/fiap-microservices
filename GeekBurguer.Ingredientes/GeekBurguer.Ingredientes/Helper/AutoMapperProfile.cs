@@ -12,9 +12,9 @@ namespace GeekBurguer.Ingredientes.Helper
             CreateMap<ProductToGet, IngredientsResponse>()
                 .ForMember(x => x.ProductId, y => y.MapFrom(a => a.ProductId))
                 .ForMember(x => x.Ingredients, y => y.MapFrom(a => a.Items.Select(b => b.Name)));
-            CreateMap<ProductToGet, ProductIngredients>()
+            CreateMap<ProductToGet, Model.Products>()
                 .ForMember(x => x.ProductId, y => y.MapFrom(a => a.ProductId))
-                .ForMember(x => x.Ingredients, y => y.MapFrom(a => a.Items.Select(b => b.Name)));
+                .ForMember(x => x.Items, y => y.MapFrom(a => a.Items.Select<ItemToGet, string>(b => b.Name)));
         }
     }
 }
