@@ -27,7 +27,8 @@ namespace GeekBurguer.Ingredientes.Services
                 foreach (var item in product.Items)
                 {
                     //valida se os igredientes possui alguma das restriçoes enviadas
-                    if(item.Ingredients != null && !item.Ingredients.Any(e => request.Restrictions.Contains(e))){
+                    if (item.Ingredients != null && !item.Ingredients.Any(e => request.Restrictions.Contains(e)))
+                    {
                         prodHasRestriction = false;
                     }
                 }
@@ -49,27 +50,18 @@ namespace GeekBurguer.Ingredientes.Services
 
         public async Task GetProducts()
         {
-            try
-            {
-                _productRepository.Add(new Model.Products() { StoreName = "paulista", ProductId = new Guid(), Items = new List<ItemIngredients> { new ItemIngredients() { ItemId = new Guid(), Name = "meat" } } });
+                 //MOCK
+                //_productRepository.Add(new Model.Products() { StoreName = "paulista", ProductId = new Guid(), Items = new List<ItemIngredients> { new ItemIngredients() { ItemId = new Guid(), Name = "meat" } } });
 
-                /*
+                
                 var products = await _productRepository.GetByStoreName("paulista");
 
-                var productsToGet = _mapper.Map<IEnumerable<ProductIngredients>>(products);
+                var productsToGet = _mapper.Map<IEnumerable<Model.Products>>(products);
 
                 if (productsToGet.Any())
                 {
                     _productRepository.AddRange(productsToGet);
-                }*/
-
-                return;
-            }
-            catch (Exception ex)
-            {
-
-                throw;
-            }
+                }
         }
 
         public void MargeProductsAndIngredients(LabelImageDTO labelImageDto)
