@@ -19,5 +19,6 @@ namespace GeekBurguer.Ingredientes.Interfaces
         bool Update(Model.Products product);
 
         List<Model.Products> GetAll();
+        void Delete(Model.Products product);
     }
 }

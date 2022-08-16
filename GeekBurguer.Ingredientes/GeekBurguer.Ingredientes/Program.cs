@@ -17,6 +17,7 @@ builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddSingleton<IProductRepository, ProductRepository>();
 builder.Services.AddSingleton<IIngredientsService, IngredientsService>();
 builder.Services.AddSingleton<ILabelImageConsumer, LabelImageConsumerService>();
+builder.Services.AddSingleton<IProductChangedConsumer, ProductChangedConsumerService>();
 builder.Services.AddSingleton<IngredientsService>();
 
 
@@ -34,9 +35,11 @@ using (var serviceScope = app.Services.GetRequiredService<IServiceScopeFactory>(
 {
     var labelImageConsumer = serviceScope.ServiceProvider.GetService<ILabelImageConsumer>();
     var ingredientsService = serviceScope.ServiceProvider.GetService<IIngredientsService>();
+    var productChangedConsumer = serviceScope.ServiceProvider.GetService<IProductChangedConsumer>();
 
     Task.Run(() => labelImageConsumer.Run());
     Task.Run(() => ingredientsService.GetProducts());
+    Task.Run(() => productChangedConsumer.Run());
 }
 
 //var labelImageConsumer = app.Services.GetService<ILabelImageConsumer>();

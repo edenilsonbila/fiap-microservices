@@ -77,6 +77,8 @@ namespace GeekBurguer.Ingredientes.Services
             //procura os produtos que possui este item: Carne
             var produtos = _productRepository.GetAll();
 
+            //var prods2 = _productRepository.GetAll().Where(e => e.Items.Any(x => x.Name == labelImageDto.ItemName)).ToList();
+
             //varre os produtos procurando qual possui o item acima: CARNE
             foreach (var produto in produtos)
             {

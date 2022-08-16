@@ -33,6 +33,12 @@ namespace GeekBurguer.Ingredientes.Repository
             return true;
         }
 
+        public void Delete(Model.Products product)
+        {
+            var index = _db.IndexOf(product);
+            _db.RemoveAt(index);
+        }
+
         public List<Model.Products> GetAll()
         {
             return _db;
