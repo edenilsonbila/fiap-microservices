@@ -24,38 +24,44 @@ namespace GeekBurguer.Ingredientes.Services
 
             foreach (var product in products)
             {
-                var prodHasRestriction = true;
+                var prodHasRestriction = product.Items.All(e => e.Ingredients == null) ? false :
+                    product.Items.Any(e => e.Ingredients.Any(x => request.Restrictions.Contains(x)));
 
-                if (product.Items.All(e => e.Ingredients == null))
-                {
-                    prodHasRestriction = false;
-                }
-                else
-                {
-                    foreach (var item in product.Items)
-                    {
-                        //valida se os igredientes possui alguma das restriçoes enviadas
-                        if (item.Ingredients != null && !item.Ingredients.Any(e => request.Restrictions.Contains(e)))
-                        {
-                            prodHasRestriction = false;
-                            break;
-                        }
-                    }
-                }
-                //FINALIZAR AQ PQ QUEBRANDO A LOGICA
+
                 if (!prodHasRestriction)
                 {
                     var ingredient = new IngredientsResponse();
                     ingredient.ProductId = product.ProductId;
+                    ingredient.Ingredients = new List<string>();
 
-                    ingredient.Ingredients = product.Items.Select(e => e.Ingredients).ToArray()[0];
+                    foreach (var ingredients in product.Items.Select(e => e.Ingredients))
+                    {
+                        foreach (var item in ingredients)
+                        {
+                            if (!ingredient.Ingredients.Contains(item))
+                                ingredient.Ingredients.Add(item);
+                        }
+                    }
+           
+
+
+                    //implementar o filtro de ingredients 
+                    /* 
+                    foreach (var item in teste) 
+                    { 
+                        if (ingredient.Ingredients.Where(e => e.Contains(item)) 
+                            ingredient.Ingredients.AddRange(item); 
+
+                    }*/
 
                     if (!prodIngredients.Contains(ingredient))
                         prodIngredients.Add(ingredient);
+
                 }
             }
 
             return prodIngredients;
+
         }
 
         public async Task GetProducts()
