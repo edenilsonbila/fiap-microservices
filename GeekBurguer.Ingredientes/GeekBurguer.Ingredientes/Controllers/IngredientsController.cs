@@ -22,5 +22,16 @@ namespace GeekBurguer.Ingredientes.Controllers
             return NotFound("Nenhum produto encontrado.");
             
         }
+
+        [HttpGet]
+        [Route("all")]
+        public async Task<IActionResult> GetAll()
+        {
+            var response = await _service.GetAll();
+            if (response != null && response.Any())
+                return Ok(response);
+            return NotFound("Nenhum produto encontrado.");
+
+        }
     }
 }

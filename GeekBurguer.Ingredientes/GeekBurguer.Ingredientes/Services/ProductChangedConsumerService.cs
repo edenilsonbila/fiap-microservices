@@ -10,7 +10,7 @@ namespace GeekBurguer.Ingredientes.Services
     public class ProductChangedConsumerService : IProductChangedConsumer
     {
         private readonly IConfiguration _configuration;
-        private const string queueName = "productchanged";
+        private const string queueName = "productchanged2";
         static ServiceBusClient client;
         static ServiceBusProcessor processor;
         static List<Task> pendingCompleteTasks = new List<Task>();

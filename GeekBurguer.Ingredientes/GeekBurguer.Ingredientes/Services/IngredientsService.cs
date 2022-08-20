@@ -1,8 +1,10 @@
 ﻿using AutoMapper;
+using GeekBurger.Service.Contract.DTO;
 using GeekBurguer.Ingredientes.Contract.DTOs;
 using GeekBurguer.Ingredientes.DTO;
 using GeekBurguer.Ingredientes.Interfaces;
 using GeekBurguer.Ingredientes.Model;
+using GeekBurguer.Products.Contract;
 
 namespace GeekBurguer.Ingredientes.Services
 {
@@ -42,17 +44,6 @@ namespace GeekBurguer.Ingredientes.Services
                                 ingredient.Ingredients.Add(item);
                         }
                     }
-           
-
-
-                    //implementar o filtro de ingredients 
-                    /* 
-                    foreach (var item in teste) 
-                    { 
-                        if (ingredient.Ingredients.Where(e => e.Contains(item)) 
-                            ingredient.Ingredients.AddRange(item); 
-
-                    }*/
 
                     if (!prodIngredients.Contains(ingredient))
                         prodIngredients.Add(ingredient);
@@ -64,8 +55,19 @@ namespace GeekBurguer.Ingredientes.Services
 
         }
 
+        public async Task<List<Model.Products>> GetAll()
+        {
+            await GetProducts();
+            var products = _productRepository.GetAll();
+
+            var productsToGet = _mapper.Map<IEnumerable<Model.Products>>(products);
+
+            return productsToGet.ToList();
+        }
+
         public async Task GetProducts()
         {
+            /*
             //MOCK
             _productRepository.Add(new Model.Products()
             {
@@ -87,16 +89,23 @@ namespace GeekBurguer.Ingredientes.Services
                 new ItemIngredients() { ItemId = new Guid(), Name = "bacon", Ingredients = { "fat","dye" } },
             }
             });
-
-
-            var products = await _productRepository.GetByStoreName("paulista");
-
-            var productsToGet = _mapper.Map<IEnumerable<Model.Products>>(products);
-
-            if (productsToGet.Any())
+            */
+            try
             {
-                _productRepository.AddRange(productsToGet);
+                var products = await _productRepository.GetByStoreName("paulista");
+
+                var productsToGet = _mapper.Map<IEnumerable<Model.Products>>(products);
+                if (productsToGet.Any())
+                {
+                    _productRepository.AddRange(productsToGet);
+                }
             }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                throw;
+            }
+
         }
 
         public void MargeProductsAndIngredients(LabelImageDTO labelImageDto)
